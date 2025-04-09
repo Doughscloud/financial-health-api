@@ -1,6 +1,8 @@
 # Terraform state files
 terraform.tfstate
 terraform.tfstate.backup
+# Ignore the .terraform directory
+.terraform/
 
 # Python bytecode
 __pycache__/
