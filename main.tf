@@ -48,16 +48,4 @@ resource "aws_instance" "web_server" {
   user_data = <<-EOF
               #!/bin/bash
               yum update -y
-              amazon-linux-extras install docker -y
-              sudo service docker start
-              sudo docker run -d -p 5001:5001 schemes3/financial-api:latest
-              EOF
-
-  tags = {
-    Name = "Financial-Health-API"
-  }
-}
-
-output "web_server_public_ip" {
-  value = aws_instance.web_server.public_ip
-}
+              amazon-linux-extras install docker 
