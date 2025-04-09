@@ -1,0 +1,12 @@
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Python bytecode
+__pycache__/
+
+# VS Code settings (if any)
+.vscode/
+
+# MacOS system files
+.DS_Store
