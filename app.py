@@ -16,6 +16,10 @@ class Tip(db.Model):
     content = db.Column(db.String(200), nullable=False)
 
 # Routes
+@app.route('/')
+def home():
+    return jsonify({"message": "Hello from Dockerized Flask App!", "status": "running", "available_endpoints": ["/tips"]})
+
 @app.route('/tips', methods=['GET'])
 def get_tips():
     try:
