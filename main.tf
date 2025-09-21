@@ -16,6 +16,15 @@ resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow inbound traffic for web servers"
 
+  # Allow HTTP traffic on port 80
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow Flask app traffic on port 5001
   ingress {
     from_port   = 5001
     to_port     = 5001
@@ -23,12 +32,20 @@ resource "aws_security_group" "web_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Add this rule to allow SSH
+  # Allow Jenkins traffic on port 8080
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Allow SSH access
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Make sure this rule allows access to port 22
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
